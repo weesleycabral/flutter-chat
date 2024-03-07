@@ -1,6 +1,3 @@
-# keystores
-keystores
-
 # Miscellaneous
 *.class
 *.log
@@ -18,10 +15,8 @@ keystores
 *.iws
 .idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+# Visual Studio Code related
+.vscode/
 
 # Flutter/Dart/Pub related
 **/doc/api/
@@ -44,15 +39,3 @@ app.*.map.json
 
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
-
-*.lock
-
-# vscode configuration
-.vscode/settings.json
-
-untranslated.txt
-/windows/flutter/
-/macos/Flutter/
-android/.settings/org.eclipse.buildship.core.prefs
-/ios/build
-.DS_Store
