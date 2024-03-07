@@ -28,6 +28,9 @@
 .pub/
 build/
 /build/
+windows/flutter/
+windows/runner/
+linux/
 
 # Web related
 lib/generated_plugin_registrant.dart
