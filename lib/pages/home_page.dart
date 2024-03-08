@@ -20,14 +20,70 @@ class _HomePageState extends State<HomePage> {
     authService.signOut();
   }
 
+  showAlertDialog(BuildContext context, msg) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          backgroundColor: Theme.of(context).colorScheme.onSecondary,
+          title: const Text(
+            'Confirmação',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          content: Text(
+            msg,
+            style: TextStyle(
+              color: Colors.grey[600],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text(
+                'Cancelar',
+                style: TextStyle(
+                  color: Colors.grey,
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text(
+                'Sim',
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                signOut();
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Page'),
+        backgroundColor: Colors.grey,
+        title: const Text('Lista de Usuários'),
         actions: [
           IconButton(
-            onPressed: signOut,
+            onPressed: () {
+              showAlertDialog(context, 'Deseja realmente sair?');
+            },
             icon: const Icon(Icons.logout),
           )
         ],

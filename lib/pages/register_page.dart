@@ -49,64 +49,66 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
-      body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: 50),
-                Icon(
-                  Icons.message,
-                  size: 100,
-                  color: Colors.grey[800],
-                ),
-                const SizedBox(height: 50),
-                const Text(
-                  'Crie sua conta',
-                  style: TextStyle(
-                    fontSize: 16,
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 25),
+                  Icon(
+                    Icons.chat,
+                    size: 100,
+                    color: Colors.grey[800],
                   ),
-                ),
-                const SizedBox(height: 25),
-                MyTextField(
-                  controller: emailController,
-                  hintText: 'Email',
-                  obscureText: false,
-                ),
-                const SizedBox(height: 10),
-                MyTextField(
-                  controller: passwordController,
-                  hintText: 'Senha',
-                  obscureText: true,
-                ),
-                const SizedBox(height: 10),
-                MyTextField(
-                  controller: confirmPasswordController,
-                  hintText: 'Confirmar Senha',
-                  obscureText: true,
-                ),
-                const SizedBox(height: 25),
-                MyButton(onTap: signUp, text: "Registrar"),
-                const SizedBox(height: 25),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text('Já tem uma conta?'),
-                    const SizedBox(
-                      width: 4,
+                  const SizedBox(height: 25),
+                  const Text(
+                    'Crie sua conta',
+                    style: TextStyle(
+                      fontSize: 16,
                     ),
-                    GestureDetector(
-                      onTap: widget.onTap,
-                      child: const Text(
-                        'Logar',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 25),
+                  MyTextField(
+                    controller: emailController,
+                    hintText: 'Email',
+                    obscureText: false,
+                  ),
+                  const SizedBox(height: 10),
+                  MyTextField(
+                    controller: passwordController,
+                    hintText: 'Senha',
+                    obscureText: true,
+                  ),
+                  const SizedBox(height: 10),
+                  MyTextField(
+                    controller: confirmPasswordController,
+                    hintText: 'Confirmar Senha',
+                    obscureText: true,
+                  ),
+                  const SizedBox(height: 25),
+                  MyButton(onTap: signUp, text: "Registrar"),
+                  const SizedBox(height: 25),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Já tem uma conta?'),
+                      const SizedBox(
+                        width: 4,
                       ),
-                    )
-                  ],
-                )
-              ],
+                      GestureDetector(
+                        onTap: widget.onTap,
+                        child: const Text(
+                          'Logar',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),
