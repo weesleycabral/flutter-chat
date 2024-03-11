@@ -18,6 +18,16 @@ class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
+  void success() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Logado com sucesso! ;)'),
+        backgroundColor: Colors.green,
+        duration: Duration(seconds: 5), // A mensagem irá aparecer por 5 segundos
+      ),
+    );
+  }
+
   void signIn() async {
     final authService = Provider.of<AuthService>(context, listen: false);
 
@@ -26,6 +36,7 @@ class _LoginPageState extends State<LoginPage> {
         emailController.text,
         passwordController.text,
       );
+      success();
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -49,11 +60,11 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 25),
-                  Icon(
-                    Icons.message,
-                    size: 100,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+                  // Icon(
+                  //   Icons.message,
+                  //   size: 100,
+                  //   color: Theme.of(context).colorScheme.primary,
+                  // ),
                   const SizedBox(height: 25),
                   const Text(
                     'Bem-vindo de volta',

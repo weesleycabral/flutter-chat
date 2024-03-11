@@ -17,6 +17,16 @@ class _RegisterPageState extends State<RegisterPage> {
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
 
+  void success() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Registrado com sucesso! ;)'),
+        backgroundColor: Colors.green,
+        duration: Duration(seconds: 5), // A mensagem irá aparecer por 5 segundos
+      ),
+    );
+  }
+
   void signUp() {
     if (passwordController.text != confirmPasswordController.text) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -43,6 +53,7 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       );
     }
+    success();
   }
 
   @override
@@ -58,11 +69,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 25),
-                  Icon(
-                    Icons.chat,
-                    size: 100,
-                    color: Colors.grey[800],
-                  ),
+                  // Icon(
+                  //   Icons.chat,
+                  //   size: 100,
+                  //   color: Colors.grey[800],
+                  // ),
                   const SizedBox(height: 25),
                   const Text(
                     'Crie sua conta',
