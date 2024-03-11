@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Center(
@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                   Icon(
                     Icons.message,
                     size: 100,
-                    color: Colors.grey[800],
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                   const SizedBox(height: 25),
                   const Text(

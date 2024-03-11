@@ -3,13 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat/firebase_options.dart';
 import 'package:flutter_chat/services/auth/auth_gate.dart';
 import 'package:flutter_chat/services/auth/auth_service.dart';
+import 'package:flutter_chat/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(ChangeNotifierProvider(
-    create: (context) => AuthService(),
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => AuthService()),
+      ChangeNotifierProvider(create: (context) => ThemeProvider()),
+    ],
     child: const MyApp(),
   ));
 }
@@ -19,9 +23,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AuthGate(),
+      home: const AuthGate(),
+      theme: Provider.of<ThemeProvider>(context).themeData,
     );
   }
 }

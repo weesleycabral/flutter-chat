@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat/pages/chat_page.dart';
 import 'package:flutter_chat/services/auth/auth_service.dart';
+import 'package:flutter_chat/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,26 +29,26 @@ class _HomePageState extends State<HomePage> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
-          backgroundColor: Theme.of(context).colorScheme.onSecondary,
-          title: const Text(
+          backgroundColor: Theme.of(context).colorScheme.background,
+          title: Text(
             'Confirmação',
             style: TextStyle(
-              color: Colors.black,
+              color: Theme.of(context).colorScheme.secondary,
               fontWeight: FontWeight.bold,
             ),
           ),
           content: Text(
             msg,
             style: TextStyle(
-              color: Colors.grey[600],
+              color: Theme.of(context).colorScheme.secondary,
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text(
+              child: Text(
                 'Cancelar',
                 style: TextStyle(
-                  color: Colors.grey,
+                  color: Theme.of(context).colorScheme.secondary,
                 ),
               ),
               onPressed: () {
@@ -55,10 +56,10 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             TextButton(
-              child: const Text(
+              child: Text(
                 'Sim',
                 style: TextStyle(
-                  color: Colors.grey,
+                  color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -77,15 +78,21 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey,
+        backgroundColor: Theme.of(context).colorScheme.background,
         title: const Text('Lista de Usuários'),
         actions: [
+          IconButton(
+            onPressed: () {
+              Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+            },
+            icon: const Icon(Icons.brightness_6),
+          ),
           IconButton(
             onPressed: () {
               showAlertDialog(context, 'Deseja realmente sair?');
             },
             icon: const Icon(Icons.logout),
-          )
+          ),
         ],
       ),
       body: _buildUserList(),
